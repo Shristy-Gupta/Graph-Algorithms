@@ -4,7 +4,7 @@
 //MST has minimum weight spanning tree
 
 //Kruskal finds minimum weight MST which is undirected, connected and weighted
-//Detect Cycle with UNION FIND Time complexity--> O(V) * Number of edges in MST--> Overall complexity O(v)
+//Detect Cycle with UNION FIND Time complexity--> O(V) * Number of edges in MST--> Overall complexity O(v) + sorting Elog(v) + EV-->worst case O(V3)
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,6 +19,8 @@ class Edge{
 bool compare(Edge e1, Edge e2){
     return e1.weight<e2.weight;
 }
+//Union by rank
+//Can be improved for Union by path compression
 int findParent(int v, int *parent){
     while(parent[v]!=v){
         v=parent[v];
