@@ -8,6 +8,7 @@ using namespace std;
 class Solution 
 {
     public:
+	//BFS
     bool checkForCycle(int s, int V,vector<int>adj[],vector<bool>& visited){
         queue<pair<int,int>> q;
         q.push({s,-1});
@@ -29,6 +30,7 @@ class Solution
         return false;
     }
     //Function to detect cycle in an undirected graph.
+	//DFS
 	bool isCycle(int V, vector<int>adj[])
 	{
 	    vector<bool> vis(V,0);
