@@ -29,8 +29,18 @@ class Solution
         }
         return false;
     }
+    //DFS https://www.youtube.com/watch?v=Y9NFqI6Pzd4&list=PLgUwDviBIf0rGEWe64KWas0Nryn7SCRWw&index=9
+    bool checkForCycle(int node,int parent,vector<int>adj[],vector<bool>& visited){
+     visited[node]=true;
+     for(auto it:adj[node]){
+	     if(visited[it]==false){
+		     if(checkForCycle(it,node,adj,visited)) return true;
+	     }
+	     else if(it!=parent){return true;}
+     } 		    
+    }	
     //Function to detect cycle in an undirected graph.
-	//DFS
+	
 	bool isCycle(int V, vector<int>adj[])
 	{
 	    vector<bool> vis(V,0);
