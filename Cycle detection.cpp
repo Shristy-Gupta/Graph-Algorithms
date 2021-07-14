@@ -37,7 +37,8 @@ class Solution
 		     if(checkForCycle(it,node,adj,visited)) return true;
 	     }
 	     else if(it!=parent){return true;}
-     } 		    
+     }
+	    return false;
     }	
     //Function to detect cycle in an undirected graph.
 	
