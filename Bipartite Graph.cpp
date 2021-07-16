@@ -42,6 +42,37 @@ public:
     }
 };
 
-//DFS
+//DFS Complexity = Time complexity =O(N+E) and Space Complexity =O(N+E) + O(N){visited array} + O(N){recursion}
+class Solution {
+public:
+    bool isBipartiteHelper(int source,vector<vector<int>>& graph,vector<int>& visited){
+        if(visited[source]==-1){visited[source]=1;}
+        for(int i=0;i<graph[source].size();i++){
+            if(visited[graph[source][i]]==-1){
+                visited[graph[source][i]]=1-visited[source];
+                bool smallans=isBipartiteHelper(graph[source][i],graph,visited);
+                if(!smallans){return false;}
+            }
+            else if(visited[graph[source][i]]==visited[source]){
+                return false;
+            }
+        }
+        return true;
+    }
+    bool isBipartite(vector<vector<int>>& graph) {
+        int n=graph.size();
+        vector<int> visited(n,-1);
+        for(int i=0;i<n;i++){
+            if(visited[i]==-1){
+                visited[i]=1;
+                if(!isBipartiteHelper(i,graph,visited)){
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+};
 
 
